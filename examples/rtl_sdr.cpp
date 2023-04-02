@@ -294,13 +294,6 @@ int main(int argc, char **argv) {
     verbose_set_sample_rate(device, uint32_t(args.samp_rate));
     verbose_set_frequency(device, uint32_t(args.frequency));
 
-    if (args.gain == AUTOMATIC_GAIN) {
-        verbose_auto_gain(device);
-    } else {
-        const int nearest_gain = find_nearest_gain(device, args.gain);
-        verbose_gain_set(device, nearest_gain);
-    }
-
     rtlsdr_set_bias_tee(device, args.is_enable_bias_tee ? 1 : 0);
     if (args.is_enable_bias_tee) {
         fprintf(stderr, "Activated bias-T on GPIO PIN 0.\n");
@@ -311,6 +304,14 @@ int main(int argc, char **argv) {
     if (args.is_offset_tuning) {
         verbose_offset_tuning(device);
     }
+
+    if (args.gain == AUTOMATIC_GAIN) {
+        verbose_auto_gain(device);
+    } else {
+        const int nearest_gain = find_nearest_gain(device, args.gain);
+        verbose_gain_set(device, nearest_gain);
+    }
+
     verbose_reset_buffer(device);
 
     int read_result = 0;
