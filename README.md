@@ -1,5 +1,5 @@
 # Introduction
-![x86-windows](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-windows.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-windows.yml)
+[![x86-windows](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-windows.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-windows.yml)
 [![x86-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml)
 [![arm-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml)
 
