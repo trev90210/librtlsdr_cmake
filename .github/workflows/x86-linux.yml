@@ -1,0 +1,58 @@
+name: x86-linux
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  skip_check:
+    continue-on-error: false
+    runs-on: ubuntu-22.04
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+    - id: skip_check
+      uses: fkirc/skip-duplicate-actions@v5
+      with:
+        concurrent_skipping: 'same_content'
+        cancel_others: 'true'
+        skip_after_successful_duplicate: 'true'
+        paths_ignore: '[".gitignore", "**/README.md", "**/LICENSE.txt", "bin/**", "include/**", "lib/**", "rtlsdr-config.cmake"]'
+        do_not_skip: '["workflow_dispatch", "schedule"]'
+
+  build:
+    needs: skip_check
+    if: needs.skip_check.outputs.should_skip != 'true'
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+      
+    - name: Install packages
+      shell: bash
+      run: |
+        cd ./examples
+        ./toolchains/x86/install_packages.sh
+    
+    - name: Configure CMake
+      shell: bash
+      run: |
+        cd ./examples
+        cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/toolchains/x86/linux-gnu-toolchain.cmake
+
+    - name: Build
+      shell: bash
+      run: |
+        cd ./examples
+        ninja -C build
+    
+    - name: Upload files (Release) 
+      uses: actions/upload-artifact@v3
+      with:
+        name: rtl_sdr
+        path: ${{github.workspace}}/examples/build
