@@ -3,33 +3,14 @@
 [![x86-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml)
 [![arm-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml)
 
-This is a config.cmake for the rtlsdr library.
-
-The repository this was compiled from is [here](https://github.com/steve-m/librtlsdr).
-
-Build targets are:
-- host=x64 target=x64
+This is a config.cmake for the rtlsdr library. Compiled from [librtlsdr/librtlsdr](https://github.com/librtlsdr/librtlsdr).
 
 # Build environment
-Built using MSYS2 Mingw64
-- gcc = 12.2.0 (Rev6, Build by MSYS2 project)
-- cmake = 3.24.3
+Built in wsl using the mingw-w32 and mingw-w64 cross compilers.
 
-# Instructions
-### 1. Clone repository [here](https://github.com/steve-m/librtlsdr.git).
-
-### 2. Install libusb-1.0 and winpthread
-<code>pacman -Su mingw-w64-x86_64-libwinpthread-git</code>
-
-<code>pacman -Su mingw-w64-x86_64-libusb</code>
-
-### 3. Run cmake configuration 
-<code>cmake . -B build -G Ninja</code>
-
-### 4. Build with ninja 
-<code>ninja -C build -j 4</code>
-
-### 5. Copy librtlsdr.dll from build/src, and libusb-1.0.dll and libwinpthread-1.dll from the Mingw64 folders.
+Refer to the [github workflow here](https://github.com/librtlsdr/librtlsdr/blob/fe225869acbe558fb014d858fb1bdd4dce96eab0/.github/workflows/c-cpp.yml).
+- Job: ```cross_build_win32_win64_latest``` to replicate cross compile on wsl.
+- Steps: ```build_w32_dlldep``` and ```build_w64_dlldep``` for relevant commands.
 
 # Example code
-Sample program is shown in examples/
+Sample program is shown in ```examples/```.
