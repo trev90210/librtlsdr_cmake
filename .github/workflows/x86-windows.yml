@@ -3,7 +3,7 @@ name: x86-windows
 on:
   workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "dev" ]
 
 env:
   BUILD_TYPE: Release
@@ -24,7 +24,7 @@ jobs:
         paths_ignore: '[".gitignore", "**/README.md", "**/LICENSE.txt"]'
         do_not_skip: '["workflow_dispatch", "schedule"]'
 
-  build:
+  build_x64:
     needs: skip_check
     if: needs.skip_check.outputs.should_skip != 'true'
 
@@ -32,6 +32,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
 
     - name: Configure CMake
       run: |
@@ -53,5 +57,41 @@ jobs:
     - name: Upload files (Release)
       uses: actions/upload-artifact@v3
       with:
-        name: rtl_sdr
+        name: rtl_sdr_x64
+        path: ${{github.workspace}}/upload
+
+  build_x86:
+    needs: skip_check
+    if: needs.skip_check.outputs.should_skip != 'true'
+
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x86
+
+    - name: Configure CMake
+      run: |
+        cd ./examples
+        cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
+
+    - name: Build
+      run: |
+        cd ./examples
+        ninja -C build
+
+    - name: Copy files (Release)
+      shell: bash
+      run: |
+        mkdir upload
+        cp examples/build/*.exe upload
+        cp examples/build/*.dll upload
+
+    - name: Upload files (Release)
+      uses: actions/upload-artifact@v3
+      with:
+        name: rtl_sdr_x86
         path: ${{github.workspace}}/upload
