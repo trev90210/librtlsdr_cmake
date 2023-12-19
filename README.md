@@ -3,7 +3,7 @@
 [![x86-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml)
 [![arm-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml)
 
-This is a config.cmake for the rtlsdr library. Compiled from [librtlsdr/librtlsdr](https://github.com/librtlsdr/librtlsdr).
+This is a config.cmake for the rtlsdr library. Compiled from [librtlsdr/librtlsdr](https://github.com/librtlsdr/librtlsdr/tree/fe225869acbe558fb014d858fb1bdd4dce96eab0).
 
 # Build environment
 Built in wsl using the mingw-w32 and mingw-w64 cross compilers.
