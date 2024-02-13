@@ -1,7 +1,7 @@
 # Introduction
-[![x86-windows](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-windows.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-windows.yml)
-[![x86-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/x86-linux.yml)
-[![arm-linux](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml/badge.svg)](https://github.com/FiendChain/librtlsdr_cmake/actions/workflows/arm-linux.yml)
+[![x86-windows](https://github.com/williamyang98/librtlsdr_cmake/actions/workflows/x86-windows.yml/badge.svg)](https://github.com/williamyang98/librtlsdr_cmake/actions/workflows/x86-windows.yml)
+[![x86-linux](https://github.com/williamyang98/librtlsdr_cmake/actions/workflows/x86-linux.yml/badge.svg)](https://github.com/williamyang98/librtlsdr_cmake/actions/workflows/x86-linux.yml)
+[![arm-linux](https://github.com/williamyang98/librtlsdr_cmake/actions/workflows/arm-linux.yml/badge.svg)](https://github.com/williamyang98/librtlsdr_cmake/actions/workflows/arm-linux.yml)
 
 This is a config.cmake for the rtlsdr library. Compiled from [librtlsdr/librtlsdr](https://github.com/librtlsdr/librtlsdr/tree/fe225869acbe558fb014d858fb1bdd4dce96eab0).
 
