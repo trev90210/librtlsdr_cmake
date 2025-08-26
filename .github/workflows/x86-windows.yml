@@ -55,7 +55,7 @@ jobs:
         cp examples/build/*.dll upload
 
     - name: Upload files (Release)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: rtl_sdr_x64
         path: ${{github.workspace}}/upload
@@ -91,7 +91,7 @@ jobs:
         cp examples/build/*.dll upload
 
     - name: Upload files (Release)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: rtl_sdr_x86
         path: ${{github.workspace}}/upload
