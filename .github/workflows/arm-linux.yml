@@ -54,7 +54,7 @@ jobs:
         ninja -C build 
     
     - name: Upload files (Release) 
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: rtl_sdr
         path: ${{github.workspace}}/examples/build
