@@ -31,9 +31,9 @@ jobs:
     runs-on: windows-2022
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - uses: ilammy/msvc-dev-cmd@v1
+    - uses: ilammy/msvc-dev-cmd@v2
       with:
         arch: x64
 
@@ -55,7 +55,7 @@ jobs:
         cp examples/build/*.dll upload
 
     - name: Upload files (Release)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: rtl_sdr_x64
         path: ${{github.workspace}}/upload
@@ -67,9 +67,9 @@ jobs:
     runs-on: windows-2022
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - uses: ilammy/msvc-dev-cmd@v1
+    - uses: ilammy/msvc-dev-cmd@v2
       with:
         arch: x86
 
@@ -91,7 +91,7 @@ jobs:
         cp examples/build/*.dll upload
 
     - name: Upload files (Release)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: rtl_sdr_x86
         path: ${{github.workspace}}/upload
