@@ -33,7 +33,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: ilammy/msvc-dev-cmd@v2
+    - uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: x64
 
@@ -69,7 +69,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: ilammy/msvc-dev-cmd@v2
+    - uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: x86
 
